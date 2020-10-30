@@ -1,0 +1,42 @@
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+        <a class="navbar-brand" routerLink="/">My Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="">Home
+                    <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/">About</a>
+                </li>
+                <li ngbDropdown class="ngbDropdown nav-item dropdown">
+                    <a ngbDropdownToggle class="nav-link dropdown-toggle" href="javaScript:void(0)" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                      <a ngbDropdownItem class="dropdown-item" routerLink="my/orders">My-Orders</a>
+                      <a ngbDropdownItem class="dropdown-item" routerLink="check-out">Check-out</a>
+                      <a ngbDropdownItem class="dropdown-item" routerLink="order-success">Order Success</a>
+                      <a ngbDropdownItem class="dropdown-item" routerLink="products">Products</a>
+                      <a ngbDropdownItem class="dropdown-item" routerLink="admin/products" *ngIf="isAdminLoggedIn">Admin products</a>
+                      <a ngbDropdownItem class="dropdown-item" routerLink="admin/orders" *ngIf="isAdminLoggedIn">Admin Orders</a>
+                    </div>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link" routerLink="login">Login</a>
+                </li>
+                <li ngbDropdown class="ngbDropdown nav-item dropdown"  *ngIf="isLoggedIn">
+                    <a ngbDropdownToggle class="nav-link dropdown-toggle" href="javaScript:void(0)" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ userData.name }} </a>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown02">
+                      <a ngbDropdownItem class="dropdown-item" (click)="logout()">Logout</a>
+                      
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>

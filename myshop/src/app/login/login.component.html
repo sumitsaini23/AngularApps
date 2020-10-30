@@ -1,0 +1,27 @@
+<form #signin="ngForm" (ngSubmit)="login(signin)" class="form-signin">
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    </div>
+  
+    <div class="form-label-group">
+      <input #email="ngModel" ngModel name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="off" autofocus>
+      <label for="inputEmail">Email address</label>
+        <span *ngIf="email.touched && email.invalid">
+            <div class="alert alert-danger" *ngIf="email.errors.required">Email required</div>
+            <div class="alert alert-danger" *ngIf="email.errors.pattern">Email pattern not match</div>
+        </span>
+    </div>
+  
+    <div class="form-label-group">
+      <input  #password="ngModel" ngModel name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
+      <label for="inputPassword">Password</label>
+    </div>
+  
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!signin.valid">Sign in</button>
+</form>

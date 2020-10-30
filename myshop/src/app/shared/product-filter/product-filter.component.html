@@ -1,0 +1,9 @@
+<div class="sticky-top">
+    <div class="list-group" *ngIf="categories?.data">
+        <a routerLink="{{ href }}" class="list-group-item" [class.active]="!category"> All Categories</a>
+        <a routerLink="{{ href }}" [queryParams]="{ category: c.name }" class="list-group-item" [class.active]="category ==  c.name " *ngFor="let c of categories.data"> {{ c.name | titlecase }}</a>
+    </div>
+    <div *ngIf="!categories?.data">
+        No Category Available
+    </div>
+</div>
